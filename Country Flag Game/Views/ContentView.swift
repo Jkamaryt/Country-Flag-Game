@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var quizManager = QuizManager() // purpose of object vs variable is that a object is live and can be changed trhoughout the program
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack(spacing: 40)
+        {
+            VStack(spacing: 40)
+            {
+                Text("Country Flag Game")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.yellow)
+                Text("Ready to test your skills?")
+                    .foregroundColor(.yellow)
+            }
+            NavigationLink
+            {
+                Question_View()
+                    .environmentObject(quizManager)
+            } label:
+            {
+                Custom_Button(text: "Start")
+            }
+            
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea(.all)
+        .background(.cyan)
     }
 }
 
