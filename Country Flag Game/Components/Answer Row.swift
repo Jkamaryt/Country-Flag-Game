@@ -10,6 +10,7 @@ import SwiftUI
 struct Answer_Row: View {
     var answer: Answer
     @State private var isSelected = false
+    @EnvironmentObject var quizManager: QuizManager
     var body: some View {
         HStack(spacing: 20) {
             Image(systemName: "circle.fill")
@@ -27,10 +28,13 @@ struct Answer_Row: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.white)
         .cornerRadius(10)
-            .shadow(color: isSelected ? (answer.isCorrect ? .green : .red) : .gray, radius: 5, x: 0.5, y: 0.5)
-            .onTapGesture {
+        .shadow(color: isSelected ? (answer.isCorrect ? .green : .red) : .gray, radius: 5, x: 0.5, y: 0.5)
+        .onTapGesture {
+            if !quizManager.answerSelected {
                 isSelected = true
+                quizManager.selectAnswer(answer: answer)
             }
+        }
     }
 }
 
