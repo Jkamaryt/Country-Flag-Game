@@ -43,6 +43,7 @@ struct Question_View: View {
                     Custom_Button(text: "Next", background: quizManager.answerSelected ? .yellow : .gray)
                 }
                 .disabled(!quizManager.answerSelected)
+                Spacer()
             }
             .padding()
             .frame(width: .infinity, height: .infinity)
