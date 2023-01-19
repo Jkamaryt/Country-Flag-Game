@@ -34,6 +34,7 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .ignoresSafeArea(.all)
             .background(.cyan)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
